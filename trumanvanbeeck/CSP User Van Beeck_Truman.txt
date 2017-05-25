@@ -3,3 +3,4 @@ Van Beeck Truman
 //Insert Name into this Document on line 2
 
 //Insert url where you forked a repository
+https://gist.github.com/happy-box/6f8886b2208e1702e380#file-magic_8_ball-py-L1
