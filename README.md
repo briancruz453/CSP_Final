@@ -2,7 +2,7 @@
 5/25/2017
 Instructions for the Final
 
-1. You need to find a hangman .py program file on github.  (5 pts)
+1. You need to find a magic 8 Ball .py program file on github.  (5 pts)
 2. It is up to you how you want to proceed. Either copy and paste the code into a new file, 
   clone the users repo, or fork and then clone the repo. 
 3. Make sure you can get the file to work.  Remember that some users might have developed their program in a future version of python.
