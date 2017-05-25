@@ -1,7 +1,7 @@
 from six import print_ as xprint
 from six.moves import input
 import random
-
+#uses basic symbols to make the pictures for hangman
 HANGMANPICS = ['''
 
   +---+
@@ -59,7 +59,7 @@ HANGMANPICS = ['''
  / \  |
       |
 =========''']
-
+#creates a list of words for the initializer to use to make the game
 
 words = ('ant baboon badger bat bear beaver camel cat clam cobra cougar '
          'coyote crow deer dog donkey duck eagle ferret fox frog goat '
@@ -69,7 +69,7 @@ words = ('ant baboon badger bat bear beaver camel cat clam cobra cougar '
          'stork swan tiger toad trout turkey turtle weasel whale wolf '
          'wombat zebra ').split()
 
-
+#initializes the game with the list of words
 class Hangman:
     def __init__(self, words):
         """Initializes the game state
@@ -80,12 +80,12 @@ class Hangman:
         Args:
             words (list of strings): List of words to choose from
         """
-
+		#self = the word used and what you got right and wrong
         self._missed_letters = ''
         self._correct_letters = ''
         self._secret_word = random.choice(words)
         self._game_is_done = False
-
+#Creates the game board and updates it when a letter is missed or gotten corect
     def _display_board(self):
         """Displays the current status of the game that is being played."""
 
@@ -108,14 +108,14 @@ class Hangman:
         for letter in blanks:
             xprint(letter, end=' ')
         xprint()
-
+#Takes letter from guess and makes sure it isnt already guessed 
     def _get_guess(self, already_guessed):
         """Gets the input from the user.
 
         Makes sure that the input entered is a letter and
         the letter entered is not already guessed by the user.
         """
-
+		#if the letter is a letter, is one letter, and hasn't already been guessed, then it will take the letter
         while True:
             xprint('Guess a letter.')
             guess = input().lower()
@@ -127,7 +127,7 @@ class Hangman:
                 xprint('Please enter a LETTER.')
             else:
                 return guess
-
+#sees if all the guesses=the length of the secret word, and returns true if so
     def _check_win(self):
         """Returns True if the user has won, False otherwise.
 
@@ -142,14 +142,14 @@ class Hangman:
                'You have won!'.format(self._secret_word))
 
         return True
-
+#if all guesses have been used and they are all wrong, then it will return true
     def _check_lost(self):
         """Returns True if the user has lost, False otherwise.
 
         Alerts the user if all his chances have been used, without
         guessing the secret word.
         """
-
+#if the length of missed letters == the length of hangmanpics, then shos number of correct and incorrect guesses on the end game screen
         if len(self._missed_letters) == len(HANGMANPICS) - 1:
             self._display_board()
 
@@ -163,38 +163,39 @@ class Hangman:
             return True
 
         return False
-
+#Starts the game
     def run(self):
         """Initialises the game play and coordinates the game activities."""
 
         xprint('H A N G M A N')
-
+#While the game is not done it will display the board
         while not self._game_is_done:
             self._display_board()
-
+#shows missed and guesses letters
             guessed_letters = self._missed_letters + self._correct_letters
             guess = self._get_guess(guessed_letters)
-
+#if the guess is in the secret word add the guess to the correct letters list
             if guess in self._secret_word:
                 self._correct_letters = self._correct_letters + guess
                 self._game_is_done = self._check_win()
+#if the guess is not in the secret word add the letters to the missed letters list
             else:
                 self._missed_letters = self._missed_letters + guess
                 self._game_is_done = self._check_lost()
 
-
+#asks if you woul like to play again and restarts the game if yes
 def play_again():
     """Returns True if the player wants to play again, False otherwise."""
 
     xprint('Do you want to play again? (yes or no)')
     return input().lower() == 'yes'
 
-
+#restarts the game 
 def main():
     """Main application entry point."""
 
     current_game = Hangman(words)
-
+#if play_again==true then dont stop program, if false then stop it
     while True:
         current_game.run()
         if play_again():
