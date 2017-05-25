@@ -13,12 +13,12 @@ print('')
 print('')
 print('')
 print('Hello World, I am the Magic 8 Ball, What is your name?')
-name = input() 
+name = raw_input() 
 print('hello ' + name) 
 
 def Magic8Ball():
     print('Ask me a question.')
-    input()
+    raw_input()
     print (answers[random.randint(0, len(answers)-1)] )
     print('I hope that helped!')
     Replay()
@@ -26,11 +26,11 @@ def Magic8Ball():
 
 def Replay():
     print ('Do you have another question? [Y/N] ')
-    reply = input()
+    reply = raw_input()
     if reply == 'Y':
         Magic8Ball()
     elif reply == 'N':
-        exit()
+        pass
     else:
         print('I apologise, I did not catch that. Please repeat.')
         Replay()
