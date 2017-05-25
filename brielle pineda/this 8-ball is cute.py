@@ -15,27 +15,32 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
+# ^ copyright and etc. stuff ^
 
-import random
-import time
-responses = ["Not so sure", "42", "Most likely", "Absolutely not", "Outlook is good", "I see good things happening", "Never",
-"Negative", "Could be", "Unclear, ask again", "Yes", "No", "Possible, but not probable"]
+# imported libraries
+import random # random choice (for line 25)
+import time # timing (not very necessary anymore but for line 33)
 
-## Following function asks user question, then returns random results from responses
+# responses for the 8-ball
+responses = ["Not so sure", "42", "Most likely", "Absolutely not", "Outlook is good", "I see good things happening", "Never", "Negative", "Could be", "Unclear, ask again", "Yes", "No", "Possible, but not probable"]
+
+## Following function asks user question, then returns random results from responses - function answerQuery(): user is prompted to ask a question, and the program picks an answer from like 23 at random.
 def answerQuery():
-    question = input("Ask and you shall receive: ")
-    print("Let me dig deep into the waters of life, and find your answer")
-    time.sleep(2)
-    print("Hmmm")
-    time.sleep(2)
-    print(random.choice(responses))
-    print("\n")
-answerQuery()
+    question = raw_input("Ask and you shall receive: ") # this is where the user will input their question. I changed input() to raw_input() because input required you to put quotations
+    print("Let me dig deep into the waters of life, and find your answer.") # this is so it seems like the 8-ball is thinking
+    time.sleep(1) # I didn't like how long it took (I thought it broke canopy)
+    print("Hmmm, please wait.") # to set the mood of the 8-ball is thinking
+    time.sleep(1) # I didn't like how long it took (I thought it broke canopy)
+    print(random.choice(responses)) # the program will pick an answer at random from line 23 and print it
+    # print("\n") - line break; removed because it was a little unneccessary
+answerQuery() # when the program runs, it will run answerQuery()
 
-## Following asks user if they would like to play again, and loops until user is finished
-secondQuestion = (input("Would you like to ask the Wise One another question? Y/N: "))
-while secondQuestion == str("Y"):
-    answerQuery()
-    secondQuestion = (input("Would you like to ask the Wise One another question? Y/N: "))
-else:
-    print(input("Press any key to exit"))
+## Following asks user if they would like to play again, and loops until user is finished - makes the program reusable over and over again
+secondQuestion = (raw_input("Would you like to ask the Wise One another question? Y/N: ")) # this is where the user will input whether to ask again
+while secondQuestion == str("Y"): # while you keep putting "Y" as the input for the secondQuestion (only capital)
+    answerQuery() # go back to line 36 and rinse and repeat
+    secondQuestion = (raw_input("Would you like to ask the Wise One another question? Y/N: ")) # so the user can answer the second question again
+'''else:
+    print(input("Press any key to exit"))''' # unneccessary. now, if you put anything other than "Y", the program stops abruptly
+
+# edited to make it work as dictated in question #3 in the readme
