@@ -1,5 +1,7 @@
+# Import random module for rng
 import random
 
+# Answers that can be chosen
 ANSWERS = [
     "It is certain",
     "It is decidedly so",
@@ -22,8 +24,13 @@ ANSWERS = [
     "Outlook not so good",
     "Very doubtful" ]
 
+# Main method
 def main():
+    # Print a random answer
+    # selects a random int between 0 and the length of the list and selects that from the array
     print(ANSWERS[random.randint(0, len(ANSWERS) - 1)])
 
+# Program starting point, is true when this python file is being directly run
 if __name__ == "__main__":
+    # Call main method if true
     main()
