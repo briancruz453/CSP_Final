@@ -1,0 +1,6 @@
+CSP Final
+Cullan Steele
+//Insert Name into this Document on line 2
+Cullan Steele
+//Insert url where you forked a repository
+https://github.com/viljodotme/magic8
